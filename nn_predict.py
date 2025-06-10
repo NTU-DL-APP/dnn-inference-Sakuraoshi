@@ -12,11 +12,11 @@ def softmax(x):
     if x.ndim == 1:
         x = x - np.max(x)
         e_x = np.exp(x)
-        return e_x / np.sum(e_x)
+        return (e_x / np.sum(e_x)).astype(np.float32)
     else:
         x = x - np.max(x, axis=-1, keepdims=True)
         e_x = np.exp(x)
-        return e_x / np.sum(e_x, axis=-1, keepdims=True)
+        return (e_x / np.sum(e_x, axis=-1, keepdims=True)).astype(np.float32)
 
 # === Flatten ===
 def flatten(x):
